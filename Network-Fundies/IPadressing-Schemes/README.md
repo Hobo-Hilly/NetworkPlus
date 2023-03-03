@@ -9,6 +9,9 @@ Description:
 Public vs. private:
 A public IP address is a unique IP address assigned to your network router by your internet service provider and can be accessed directly over the internet. A private IP address is a unique address that your network router assigns to your device. It is used within a private network to connect securely to other devices.
 
+How does it work?
+If you need the most amount of nodes possible on a network(i.e. you have a ton of devices that need an IP address) you are going to want to run with the class A range 10.0.0.0. Class B is middle of the road in the 172.16.0.1 range. And the network range with the least amount of possible addresses is the Class C network address block 192.168.0.1   
+
 Class   Ranges                          Subnet Masks       Private Ranges           Subnet Masks 
 A      | 0.0.0.1 - 127.255.255.255 |   | 255.0.0.0 |         |  10.0.0.0  |           |  255.0.0.0 |
 
@@ -23,6 +26,7 @@ D      | 224.0.0.1 - 239.255.255.255 |
 E      | 240.0.0.1 - 255.255.255.255 |
 
 RFC1918
+Since we cannot speak to the public internet with a our private networks internal addresses we need a NAT to translate our private IP address into a public one so it can be routed properly on the public internet.
 
 Network address translation (NAT):
 We have to have a mechanism that allows us translate private IP addresses in the public IP addresses and that is NAT (Network Address Translation)
