@@ -52,3 +52,37 @@ Method #1
 128  64  32  16  8  4  2  1  The top number represents the value of each place holder/space in the binary octet
  1   1   1   1   1  1  1  1  Starting at the far end of the octet(Place holder 8) the value is halved until we get to the last place holder/space 1. which is equal to one. 
 
+128  64  32  16  8  4  2  1
+1    1    0   0  0  0  0  0 == 192 octet/ subnet
+1    0    1   0  1  0  0  0 == 168 octet/ subnet
+0    0    0   0  1  0  1  0 == 10 octet/ subnet
+
+Okay so if I see one in any one of these eight positions, I'm going to add them totaling up all the ones gives me what the decimal value.
+
+There is a maximum value and there is a minimum value. 1 to 255 These are the only valid addresses you can have.
+
+128  64  32  16  8  4  2  1
+1    1    1   1  1  1  1  1 == 255 octet/ subnet
+
+What is Binary ANDing?
+Definition:
+ANDing is one of three basic binary operations used in digital logic. The other two are OR and NOT. While all three are used in data networks, AND is used in determining the network address.
+
+EX: In binary ANDing there are only two combinations of numbers that give you a result. 1 + 1 = 1
+
+     1100
+   + 0110
+     0100
+So the answer here gives only one 1 because there is only on 1 + 1 in the equaltion
+
+               Network ID                Host ID
+              192.       168.     10.        1 
+ip address  {11000000.10101000.00001010} {.00000001}
+
+                Network ID                 Host ID
+              255.      255.     255.        0
+subnet mask {11111111.11111111.11111111} {.00000000}
+
+Network ID   11000000.10101000.00001010   .00000000
+
+So you want to notice that the number is not changing at all after being run through the ANDing process. EXCEPT the hostID/nodeID portion becomes 0. Because this process is only to discover the network NOT individual host/node ID's.
