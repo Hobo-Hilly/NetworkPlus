@@ -87,6 +87,8 @@ Step 5. Determine the networkID 1st and Last valid address. As well as the Broad
                                                 HostID        
 192.168.10.0 = 11000000.10101000.00001010.00   {000000
 
+A. How do we get the first address?
+
 To get the first address we look at the last octet in the networkID and turn the last value to a 1. Like this ..
 
 192.168.10.0 = 11000000.10101000.00001010.0000000{1
@@ -94,11 +96,16 @@ So the 1st address in doted decimal is 192.168.10.1
 
 NOTE: You cannot give the networkID (192.168.10.0) to a node. As it is already being used to identify the network.
 
+B. How do we get the Last Address?
+
 To get the Last address we look at the last octet in the networkID and change the last value to a 0 with all 1's behind it. Like this...
 192.168.10.0 = 11000000.10101000.00001010.00{11111{0 == 192.168.10.62  
 After adding the 5 1's in the last octet of the networkID and making the last value a 0 we get 192.168.10.62
 
-How do we get the broadcastID? On EVERY SINGLE NETWORK there is whats known as a broadcastID and to get this we look at the networkID again and change the last octet(excluding the 2 bits that make up the networkID) to all 1's. Looks like this..
+
+C. How do we get the broadcastID? 
+
+On EVERY SINGLE NETWORK there is whats known as a broadcastID and to get this we look at the networkID again and change the last octet(excluding the 2 bits that make up the networkID) to all 1's. Looks like this..
 
 192.168.10.0 = 11000000.10101000.00001010.00 {111111 == 192.168.10.63
 
@@ -124,13 +131,13 @@ BroadcastID: 192.168.10.127
 Production
 192.168.10.128 = 11000000.10101000.00001010.10   {000000
 255.255.255.192 = 11111111.11111111.11111111.11   {000000
-1st address:
-Last address:
-BroadcastID:
+1st address: 192.168.10.129
+Last address: 192.168.10.200
+BroadcastID: 192.168.10.201
 
 Edutainers
 192.168.10.192 = 11000000.10101000.00001010.11   {000000
 255.255.255.192 = 11111111.11111111.11111111.11   {000000
-1st address:
-Last address:
-BroadcastID:
+1st address: 192.168.10.193
+Last address: 192.168.10.254
+BroadcastID: 192.168.10.255
