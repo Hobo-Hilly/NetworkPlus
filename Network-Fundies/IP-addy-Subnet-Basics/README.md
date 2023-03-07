@@ -46,8 +46,13 @@ Step 1. Convert to binary. Then use binaryANDing to determine the first network.
 
 
 Step 2. Determine how many hostID bits to become networkID bits. 4 networks = _ bits?
+NOTE: The last octet is ALL HOST BITS until you determine how many bits you need to borrow to create the number of networks needed. If you only need 2 networks you can borrow 1 bit. 
+If you need 4 networks you need to borrow 2 bits
+If you need 5,6,7 or 8 networks you need to borrow 3 bits
+If you need 8,9,10,11,12,13,14,15,16 networks you need to borrow 4 bits 
+& so on.  
 
-"Since we need 4 networks we are only going to manipulate the first 2 spaces because there are only four possible value combinations in those two spaces; 00 / 10 / 01 / 11. Each combination represents a network ID. 4 combinations == 4 Networks
+"Since we need 4 networks we are only going to borrow 2 bits from the 8 total in the last octet of the IP block given to us.Because there are only four possible value combinations in those two spaces; 00 / 10 / 01 / 11. Each combination represents a network ID. 4 combinations == 4 Networks
 
 192.168.10.0 = 11000000.10101000.00001010.__000000
 255.255.255.0 = 11111111.11111111.11111111.__000000
@@ -63,18 +68,33 @@ Step 3. Change the subnet mask to associate new bits. So in the subnet mask we c
 '255.255.255.192'
 
 
+NOTE: If you borrowed 3 bits the last octet would look like 
+11111111.11111111.11111111. 111 {000000 == 255.255.255.224
+
+If you borrowed 4 bits the last octet would look like 
+11111111.11111111.11111111. 1111 {00000 == 255.255.255.240
+
+If you borrowed 5 bits the last octet would look like 
+11111111.11111111.11111111. 11111 {0000 == 255.255.255.248
+
+& so on.
+
+
 Step 4. find every possible binary combination of those 2 bits(we used in step 2) to become new NetworkIDs.
 
-
+1st Network
 192.168.10.0 = 11000000.10101000.00001010.00000000
 255.255.255.192 = 11111111.11111111.11111111.11000000
 
+2nd Subnet Network
 192.168.10.64 = 11000000.10101000.00001010.01   {000000
 255.255.255.192 = 11111111.11111111.11111111.11   {000000
 
+3rd Subnet Network
 192.168.10.128 = 11000000.10101000.00001010.10   {000000
 255.255.255.192 = 11111111.11111111.11111111.11   {000000
 
+4th Subnet Network
 192.168.10.192 = 11000000.10101000.00001010.11   {000000
 255.255.255.192 = 11111111.11111111.11111111.11   {000000
 

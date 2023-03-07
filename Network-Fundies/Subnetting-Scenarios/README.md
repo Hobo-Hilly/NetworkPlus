@@ -97,6 +97,10 @@ If we use our binary table below we find that the answer is D!
 
 
 
+
+
+
+
 Bonus:
 
 Scenario #5: 191.199.67.97 255.255.248.0 is a host in which network?
@@ -106,14 +110,12 @@ C.191.199.32.0 255.255.248.0
 D.191.199.16.0 255.255.248.0
 
 
-
-
-
 Scenario #6: What is the broadcast ID for 191.199.67.97 255.255.248.0?
-A.191.199.64.255 255.255.248.0
-B.191.199.71.255 255.255.248.0
-C.191.199.97.255.255.248.0
-D.191.199.67.97 255.255.248.0
+A.191.199.64.255    255.255.248.0
+B.191.199.71.255    255.255.248.0
+C.191.199.97        255.255.248.0
+D.191.199.67.97     255.255.248.0
+
 
 Scenario #7: how many hosts can 191.199.67.97/21 support?
 A.2047	
@@ -127,3 +129,31 @@ B.255.255.255.252 and /21
 C.255.255.255.254 and /31
 D.255.255.255.252 and /30
 
+----------------------------------------------------------------------------------
+
+EXPLANATION
+
+------------------------------------------------------------------------------------
+
+
+Binary ANDing is the process of performing multiplication to two binary numbers. In the Decimal Numbering system, ANDing is addition: 2 and 3 equals 5. In Decimal, there are an infinite number of answers when ANDing two numbers together. However, in the Binary Numbering system, the AND function yields only two possible outcomes, based on four different combinations. These outcomes, or answers, can be displayed in what is known as a truth table:
+
+
+          0 and 0 = 0
+          1 and 0 = 0
+          0 and 1 = 0
+          1 and 1 = 1
+
+You use ANDing most often when comparing an IP address to its subnet mask. The end result of ANDing these two numbers together is to yield the network number of that address.
+
+
+192.168.100.115 == 11000000.10101000.01100100.01110011
+
+255.255.255.192 == 11111111.11111111.11111111.11000000
+
+    Binary ANDing
+                   11000000.10101000.01100100.01000000
+
+Convert back to dot decimal notation.
+
+192.168.100.64
