@@ -104,18 +104,40 @@ If we use our binary table below we find that the answer is D!
 Bonus:
 
 Scenario #5: 191.199.67.97 255.255.248.0 is a host in which network?
-A.191.199.64.0 255.255.248.0
+A.191.199.64.0 255.255.248.0 $
 B.191.199.0.0 255.255.248.0
 C.191.199.32.0 255.255.248.0
 D.191.199.16.0 255.255.248.0
 
+Lets BinaryAND the IPaddresses with the subenet masks to get the answer 
+
+191.199.67.97 == 10111111.11000111.01000011.01100001
+
+255.255.248.0 == 11111111.11111111.11111000.00000000
+
+                 10111111.11000111.01000000.00000000 == 191.199.64.0
+
+---------------------------------------------------------------------------------------
 
 Scenario #6: What is the broadcast ID for 191.199.67.97 255.255.248.0?
 A.191.199.64.255    255.255.248.0
-B.191.199.71.255    255.255.248.0
+B.191.199.71.255    255.255.248.0   $
 C.191.199.97        255.255.248.0
 D.191.199.67.97     255.255.248.0
 
+191.199.67.97 == 10111111.11000111.01000011.01100001
+255.255.248.0 == 11111111.11111111.11111 {000.00000000
+
+                 10111111.11000111.01000000.00000000 == 191.199.64.0 NetworkID
+                
+We know the host bits from converting the subnet mask... 255.255.248.0 == 11111111.11111111.11111 {000.00000000
+So all of the bits to the right of the Curly Brace are HOST/NODE bits
+In order to get the BroadcastID we need to turn ALL of the host bits to 1. 
+
+191.199.67.97 == 10111111.11000111.01000011.01100001 changes to this...  10111111.11000111.01000{111.11111111 == 191.199.71.255 Now we have the BroadcastID 191.199.71.255 $
+
+
+-------------------------------------------------------------------------------------------------
 
 Scenario #7: how many hosts can 191.199.67.97/21 support?
 A.2047	
@@ -123,11 +145,25 @@ B.2048
 C.2046
 D.2045
 
+
+191.199.67.97 == 10111111.11000111.01000011.01100001
+Subnet Mask 255.255.11111{000.00000000 
+
+So we need to do 2 to the power of 11 which equals 2048
+
+
+
+
+
 Scenario #8: What is the subnet mask and CIDR notation network that only needs 2 hosts per network?
 A.255.255.255.253 and /30
 B.255.255.255.252 and /21
 C.255.255.255.254 and /31
-D.255.255.255.252 and /30
+D.255.255.255.252 and /30  $
+
+Since the subnet mask MUST be all 1's with no 0's we can simple convert the last octet using the CIDR notation given.  We also know that one host/node bit gets you 2 networks because 1 value place has a possiblity of two outcomes. 0 and 128. So the answer is D!
+
+11111111.11111111.11111111.111111 {0
 
 ----------------------------------------------------------------------------------
 
