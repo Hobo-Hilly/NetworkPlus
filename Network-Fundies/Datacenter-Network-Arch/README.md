@@ -6,9 +6,18 @@ Explain basic corporate and datacenter network architecture.
 Description:
 
 Three-tiered
-    Core
-    Distribution/aggregation layer
-    Access/edge
+    Core:
+    The core layer that is just a high speed data network itself. Really not a lot of things are actually configured here is designed as she say, how much data can I pump through this entire network at this level to ensure that the access that's actually provided is the same over on one end of it.
+    
+    Distribution/aggregation layer:
+    Here is where we apply policies and different things that we want to control the data as it goes through or the traffic that goes through here, we have what's called the distribution layer as well.
+
+    
+    Access/edge:
+    This is the lowest tier/level of the 3 tiers. It represents connected devices like a laptop,desktop,phone,tablet.
+
+NOTE: So this is actually good in small to medium size is but after a while we see that it's not super efficient for really high density environments such as True datacenters.
+
 
 Software-defined networking
     Application layer
@@ -53,3 +62,15 @@ Colocation:
 Colocation (sometimes known as “colo”) is the practice of renting space for your servers and other computing hardware at a third-party provider's data center facility. When the company doesn't have the space power and other resources to store all of the data neccessary we look for companies to rent from. They say. "Hey, We have the space and what I'm willing to do, I'm willing to rent you that. 
 
 So I'll allow you to buy your own servers to put everything that you need to in this particular rack here and use the power and do all that. All that will be metered for us so that we know exactly how much to charge you and how to do that. But then we'll have a connection for you and it's dedicated to you connecting in, so you can use that as if it's at your network, even though it's actually in my place. So they're essentially renting us a box or a location so that we can actually put our servers there and not have to actually move to a brand new building
+
+What is a datacenter?
+Definition:
+A data center or data centre is a building, a dedicated space within a building, or a group of buildings used to house computer systems and associated components, such as telecommunications and storage systems.
+
+They house Critical Applications and infrastructure like Servers, storage, routers, switches, firewalls, and controllers. These systems are optimized to enable delivery of data and applications.
+
+Explanation:
+One of the things I think about as how can we make all of these devices work together to provide that and we can use something like a distributed operating system to be able to optimize. Now what I mean by distributed operating system is let's talk about a local operating system. It runs the hardware on my laptop, Ronnie's got an operating system, it runs the hardware on his laptop. They do not sit here and talk together and run each other's hardware. Distributed operating system. That datacenter says, hey, this operating system is going to run all of your servers. It's going to run everything in that data center to deliver that data in those applications.
+
+Key Understanding:
+So when it comes down to the idea of a datacenter, key elements are actually involved in that center. One is redundancy. The ability to actually maintain all the up time that we need. Also, of course the power management and the cooling facilities as well, machines get hot. We have to ensure that they can actually be cooled and providing a dedicated datacenter where that can actually be monitored and changed as needed is also going to be part of it too, help optimize even better as long as we actually get high speed data too. We talk about structured cabling and the management of those so that we don't have a spider web or a bird's nest of cables running everywhere. But what we have is truly structured cabling that helps out everything that we need to and of course the density of the environment and we can put a lot more in a single location to be able to help us out in what we're actually doing.
