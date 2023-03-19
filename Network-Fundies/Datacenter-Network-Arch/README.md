@@ -18,6 +18,15 @@ Three-tiered
 
 NOTE: So this is actually good in small to medium size is but after a while we see that it's not super efficient for really high density environments such as True datacenters.
 
+Spine and leaf
+    Software-defined network
+    Top-of-rack switching
+    Backbone
+
+The actual spine devices that we have up here at the top, there are actually connected to each of the leaf devices, but notice that the spine devices are not directly connect to each other nor the leaf devices connected to each other.
+
+So what is this architecture about? It allows us to actually expand the capabilities of our datacenter in two different ways.
+
 
 Software-defined networking
     Application layer
@@ -25,22 +34,27 @@ Software-defined networking
     Infrastructure layer
     Management plane
 
-Spine and leaf
-    Software-defined network
-    Top-of-rack switching
-    Backbone
 
 Traffic flows
-    North-South
-    East-West
+    North-South:
+North-south refers to the traffic that flows in and out of a datacenter. For example, traffic from an application to a backend service. This type of traffic is a typical target for attack vectors because it flows over the public internet.
+    
+    East-West:
+    In computer networking, east-west traffic is network traffic among devices within a specific data center.
 
 Branch office vs. on-premises datacenter vs. colocation
 
-Storage area networks
-    Connection types
-    Fibre Channel over Ethernet (FCoE)
-    Fibre Channel
-    Internet Small Computer Systems Interface (iSCSI)
+Storage area networks(SAN)
+Connection types:
+
+    Fibre Channel over Ethernet (FCoE):
+    Fibre Channel over Ethernet is a computer network technology that encapsulates Fibre Channel frames over Ethernet networks. This allows Fibre Channel to use 10 Gigabit Ethernet networks while preserving the Fibre Channel protocol
+    
+    Fibre Channel:
+    Fibre Channel is a high-speed data transfer protocol providing in-order, lossless delivery of raw block data. Fibre Channel is primarily used to connect computer data storage to servers in storage area networks in commercial data centers.
+    
+    Internet Small Computer Systems Interface (iSCSI):
+    Internet Small Computer Systems Interface or iSCSI is an Internet Protocol-based storage networking standard for linking data storage facilities. iSCSI provides block-level access to storage devices by carrying SCSI commands over a TCP/IP network.
 
 =================================================================================
 
