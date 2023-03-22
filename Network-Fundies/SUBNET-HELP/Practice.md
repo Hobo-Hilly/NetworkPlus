@@ -51,7 +51,58 @@ so if we take away a 1 we get 11111111 111111111 11111110 00000000 which == 255.
 We now know the most efficient subnet mask for the network is 255.255.254.0. The valid host address range for each subnet must be written as two ranges.
 The first IP subnet would be 192.168.0.1 through 192.168.0.255 and 192.168.1.0 through 192.168.1.254. Note that 192.168.0.0 identifies the subnet, and 192.168.1.255 is the network broadcast address.
 
-That is how you arrive at the total of 510 usable hosts.
+That is how you arrive at the total of 510 usable hosts. 
+
+-------------------------------------------------------------------
+Second half of the problem.
+-------------------------------------------------------------------
+We are expecting to have 200 remote site with 400 pcs each. What subnet mask should we use? We know that the subnet mask 255.255.254.0 will cover our 400 pcs giving us 510 hosts. But does it support the 200 remote sites we will need in the future? Lets find out. 
+
+4. To find the subnets we need to count the number of bits that were ADDED on to the ORIGINAL subnet mask. These are AKA subnet bits. So we started with ip block 192.168.0.0 and an ORIGINAL subnet mask of 255.255.0.0.
+We used the host's formula to figure out we needed a subnet mask of 255.255.254.0.
+
+If we convert both to binary 255.255.0.0    == 11111111 11111111 00000000 00000000
+                             255.255.254.0  == 11111111 11111111 11111110 00000000
+
+
+NOTE: Adding 1s to the subnet mask means you get fewer hosts per network subnet but more network subnets. If you remove 1s from the subnet mask, you get more hosts per network but fewer networks. The latter is what we need to do.
+
+We have added 7 bits to the original subnet mask. So the subnets formula would give us 2^7 = 128 networks. This is NOT enough for our future expansion plans of 200 remote locations. So we need to add a 1 to the subnet mask and try again. 
+
+255.255.254.0  == 11111111 11111111 11111111 00000000
+
+Now the subnet formula is 2^8 = 256 subnets. This will support our future expansion plans of 200 remote locations. So lets recheck the hosts formula and make sure were all good there.
+
+The hosts formula would be 2^8 - 2 = 254 Hosts Which we can see that this will NOT cover our host expansion of 400 hosts at each of the 200 locations. This means we would need to use a different private IP block to make this happen.
+
+Lets try 10.0.0.0 and a subnet mask of 255.255.0.0.
+
+Convert to Binary 00001010 00000000 00000000 00000000
+Subnets mask      11111111 11111111 11111100 00000000
+
+So applying the hosts formula we would get 2^10 - 2 = 1,022 usable hosts. 
+
+This is over kill but we are there on hosts. Lets convert our new subnet mask back to binary.
+ 11111111 11111111 11111100 00000000 ==   255.255.252
+
+Now lets calculate the Subnets. The original subnet mask was 255.0.0.0. We have added 14 1's on to it. Looks like this.
+
+255.0.0.0   == 11111111 00000000 00000000 00000000
+255.255.252 == 11111111 11111111 11111100 00000000
+
+The new subnet mask uses/adds 14 subnet bits. So the subnets formula is 2^14 = 16,384 
+So this is more than enough to cover our 200 loactions. 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
