@@ -75,6 +75,8 @@ Now the subnet formula is 2^8 = 256 subnets. This will support our future expans
 
 The hosts formula would be 2^8 - 2 = 254 Hosts Which we can see that this will NOT cover our host expansion of 400 hosts at each of the 200 locations. This means we would need to use a different private IP block to make this happen.
 
+==============================================================================
+
 Lets try 10.0.0.0 and a subnet mask of 255.255.0.0.
 
 Convert to Binary 00001010 00000000 00000000 00000000
@@ -87,8 +89,8 @@ This is over kill but we are there on hosts. Lets convert our new subnet mask ba
 
 Now lets calculate the Subnets. The original subnet mask was 255.0.0.0. We have added 14 1's on to it. Looks like this.
 
-255.0.0.0   == 11111111 00000000 00000000 00000000
-255.255.252 == 11111111 11111111 11111100 00000000
+255.0.0.0   == 11111111 00000000 00000000 00000000  Original subnet
+255.255.252 == 11111111 11111111 11111100 00000000  New Subnet
 
 The new subnet mask uses/adds 14 subnet bits. So the subnets formula is 2^14 = 16,384 
 So this is more than enough to cover our 200 loactions. 
