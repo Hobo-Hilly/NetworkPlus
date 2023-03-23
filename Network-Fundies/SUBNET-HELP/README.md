@@ -44,7 +44,7 @@ With a single network subnet and only 20 hosts, the simplest thing to do would b
 Step 2. Convert to binary
 Before you decide to use this subnet mask, however, let's apply the host's formula to it. To use the host's formula in this scenario, you take the subnet mask 255.255.255.0 and convert it to binary. This would give you: 111111111 11111111 11111111 00000000.
 
-As you can see, there are eight 0s in the subnet mask. To use this with the host's formula, you would calculate 28 - 2. This comes to 256 minus the 2 reserved addresses, or 254. So, with the subnet mask specified, you will get 254 usable hosts. This would suit your 20-user network now but won't support your future network expansion to 300 hosts.
+As you can see, there are eight 0s in the subnet mask. To use this with the host's formula, you would calculate 2^8 - 2 = 254. This comes to 256 minus the 2 reserved addresses, or 254. So, with the subnet mask specified, you will get 254 usable hosts. This would suit your 20-user network now but won't support your future network expansion to 300 hosts.
 
 Step 3. Calculate the total number of hosts per subnet
 You should plan ahead and choose the best subnet mask the first time. This prevents you from having to go back later and change all the IP addresses on this network. Adding 1s to the subnet mask means you get fewer hosts per network subnet but more network subnets. If you remove 1s from the subnet mask, you get more hosts per network but fewer networks. The latter is what we need to do.
@@ -64,7 +64,7 @@ That is how you arrive at the total of 510 usable hosts.
 Step 4. Calculate the number of subnets
 Now that you understand the host's formula, you should also know the subnet's formula, which will ensure you have the right subnet mask for the number of subnets that you have. Just because you determine yo3u have the right number of hosts for your LAN using the host's formula doesn't mean you'll have enough subnets for your network. Let's see how the subnet's formula works.
 
-The subnet's formula is 2s, where s is the number of 1s added to the subnet mask, from whatever the subnet mask was. Let's take the same example as above, but build on it.
+The subnet's formula is 2^s, where s is the number of 1s added to the subnet mask, from whatever the subnet mask was. Let's take the same example as above, but build on it.
 
 Using network 192.168.0.0, we expect to have 100 remote sites with 300 PCs each. What subnet mask should we use? In our last example, we found the 255.255.254.0 subnet mask provided 510 hosts per subnet. That was more than adequate to support 300 PCs, but does that same subnet mask provide networks for at least 100 remote sites? Let's find out.
 

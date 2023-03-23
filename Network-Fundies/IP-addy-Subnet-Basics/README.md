@@ -37,7 +37,7 @@ Scenario: We are assigned the 192.168.10.0 ip range with a subnet mask of 255.25
 
 
 How did we get the answer?
-EX: We get there is 5 steps.
+EX: We get there in 5 steps.
 
 Step 1. Convert to binary. Then use binaryANDing to determine the first network.
 192.168.10.0 = 11000000.10101000.00001010.00000000
@@ -53,6 +53,14 @@ If you need 8,9,10,11,12,13,14,15,16 networks you need to borrow 4 bits
 & so on.  
 
 "Since we need 4 networks we are only going to borrow 2 bits from the 8 total in the last octet of the IP block given to us.Because there are only four possible value combinations in those two spaces; 00 / 10 / 01 / 11. Each combination represents a network ID. 4 combinations == 4 Networks
+
+Using the subnet formula here: The original subnet mask is 255.255.255.0 = 11111111.11111111.11111111.000000000 and if we add a 1 like this 255.255.255.0 = 11111111.11111111.11111111.1 0000000
+
+so if we add 1 to the original subnet mask it would be 2^1 = 2 Networks 
+
+if we add two 1's into the subnet mask like this 255.255.255.0 = 11111111.11111111.11111111.11 000000
+Using the subnet formula it would be 2^2 = 4 networks 
+
 
 192.168.10.0 = 11000000.10101000.00001010.__000000
 255.255.255.0 = 11111111.11111111.11111111.__000000
