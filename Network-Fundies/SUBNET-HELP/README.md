@@ -15,16 +15,21 @@ Subnetting and route summarization work together to make routers more efficient 
 Next, let's review some background information, including what network administrators need to know about IP addressing and subnetting. We recommend starting with a review of some basic elements of IP addressing and subnetting:
 
 IP addresses must be unique on the internet when using public IP addresses and on a private network when using private IP addresses.
+
 IPv4 addresses are 32 bits made up of four octets of 8 bits each. To calculate the subnet mask, convert an IP address to binary, perform the calculation and then convert back to the IPv4 decimal number representation known as a dotted quad. The same subnetting procedure works for IPv6 addresses.
 A subnet mask tells the computer what part of the IP address is the network portion of the address and what part identifies the host address range, which are addresses that are assigned to host computers on that network. A longer subnet mask -- meaning more 1 bits in the mask -- creates more IP subnets that have a smaller host address block size.
+
+
 Subnetting breaks a large network into smaller networks by extending the length of the subnet mask. This increases the number of subnetworks, while reducing the number of hosts per subnet. Organizations will typically use several different subnet masks for different sizes of networks. For example, a point-to-point link with only two devices would use a 31-bit mask. An office LAN or data center LAN, however, would use a shorter subnet mask that allows more hosts. Determining the tradeoff between the number and size of subnets is explained below.
+
+
 Today, classless IP addresses with variable-length subnet masks are used almost exclusively, and classful IP addresses -- known as either Class A network, Class B network or Class C network -- are used only for certification testing or older routing protocols. A Class D network is used for multicast, and there is an experimental allocation known as Class E.
+
+
 A default gateway is a device, typically a router, where hosts send packets that are destined for a device not on the local LAN. Again, the device knows what is and what is not on the local LAN by using its assigned subnet mask to compare its local IP address and subnet with the destination's IP address and subnet.
 Private IP addresses, also known as Request for Comment 1918 addresses, are used by most networks today. These special IP addresses are not routable over the internet and must be translated to public IP addresses when those devices need to talk to the internet, either through a proxy server or through Port Address Translation.
 Now, let's learn more about IP addressing and subnetting and how they apply to your real-world network.
 
-Download our Subnets vs. VLANs Exclusive Guide
-We want you to have a copy of our subnet vs. VLAN guide available here that clearly explains the OSI model, key differences between subnets and VLANs, and how network administers can put both in practice.
 
 Using the host's formula
 A common, real-world question when laying out your network is: "What subnet mask do I need for my network?" To answer this question, let's learn how to use the host's formula.
@@ -50,14 +55,14 @@ To do this, let's take away one of the 1s to make our subnet mask:
 
 In decimal number, or dotted quad representation, this is 255.255.254.0.
 
-This means you have nine 0s in the host portion of the subnet mask. To apply the host's formula with this subnet mask, we'd calculate 29 - 2. The number of usable host IP addresses is 512 minus 2, or 510. This would definitely suit a 20-user network now and future network and host expectations of 300 hosts.
+This means you have nine 0s in the host portion of the subnet mask. To apply the host's formula with this subnet mask, we'd calculate 2^9 - 2 == 510. The number of usable host IP addresses is 512 minus 2, or 510. This would definitely suit a 20-user network now and future network and host expectations of 300 hosts.
 
 Considering that information, we know the most efficient subnet mask for the network is 255.255.254.0. The valid host address range for each subnet must be written as two ranges, due to the limitations of writing the addresses as dotted quads. The first IP subnet would be 192.168.0.1 through 192.168.0.255 and 192.168.1.0 through 192.168.1.254. Note that 192.168.0.0 identifies the subnet, and 192.168.1.255 is the network broadcast address.
 
 That is how you arrive at the total of 510 usable hosts.
 
 Step 4. Calculate the number of subnets
-Now that you understand the host's formula, you should also know the subnet's formula, which will ensure you have the right subnet mask for the number of subnets that you have. Just because you determine you have the right number of hosts for your LAN using the host's formula doesn't mean you'll have enough subnets for your network. Let's see how the subnet's formula works.
+Now that you understand the host's formula, you should also know the subnet's formula, which will ensure you have the right subnet mask for the number of subnets that you have. Just because you determine yo3u have the right number of hosts for your LAN using the host's formula doesn't mean you'll have enough subnets for your network. Let's see how the subnet's formula works.
 
 The subnet's formula is 2s, where s is the number of 1s added to the subnet mask, from whatever the subnet mask was. Let's take the same example as above, but build on it.
 
@@ -70,20 +75,28 @@ Let's convert to binary:
 
 255.255.0.0   = 11111111 11111111 00000000 00000000
 255.255.254.0 = 11111111 11111111 11111110 00000000
-The new mask uses seven subnet bits. Using the subnet's formula, this would give us 27 = 128 networks. This is at least 100, so we have enough subnets for 100 remote networks. This means we have found the right subnet mask for our network. We convert our subnet mask from binary back to decimal and get 255.255.254.0.
+The new mask uses seven subnet bits. Using the subnet's formula gives us 2^7 which equals 128. So we would have a possible 128 subnets. This is at least 100, so we have enough subnets for 100 remote networks. This means we have found the right subnet mask for our network. We convert our subnet mask from binary back to decimal and get 255.255.254.0.
 
 As you add subnet bits, the number of subnets increases by a factor of two, and the number of hosts per subnet decreases by a factor of two. The table below shows the number of subnets and hosts for each of eight mask bits in the third octet of an IPv4 address.
 
 calculating subnets and hosts
 This table shows the number of subnets and hosts for each of eight mask bits in the third octet of an IPv4 address.
 Variable-length subnetting
+
+
 Most networks require subnets of several different sizes, sometimes called variable-length subnet masks. This is easily accomplished by taking one of the larger subnets -- a subnet with a shorter mask -- and applying the subnetting algorithm to it. This is known as variable-length subnetting since the network will have subnet masks of several different lengths.
 
 Extending the example from above, let's say that most of the 100 sites also require two point-to-point WAN links or 200 subnets with two hosts each -- a router on each end of the link. We are starting with a subnet mask of 255.255.254.0. Using the host's formula, we need two host bits (22 - 2 = 4 - 2 = 2). Extending the subnet mask results in the following in binary:
 
 255.255.254.0   = 11111111 11111111 11111110 00000000
 255.255.255.252 = 11111111 11111111 11111111 11111100
-The subnet mask was extended by seven bits. Using the subnet's formula of 2s, we have 27 = 128 subnets. This isn't enough for all our WAN links, so we do the same thing with another large subnet. If we reserved the top two large subnets to be sub-subnetted for WAN links, we would have enough capacity for 256 point-to-point links.
+The subnet mask was extended by seven bits. Using the subnet's formula of 2^7 = 128. We have 128 subnets. This isn't enough for all our WAN links, so we do the same thing with another large subnet. If we added another 1 in the subnet mask.
+
+255.255.255.0   = 11111111 11111111 11111111 00000000
+
+Now the subnets formula is 2^8 which gives us 256 subnets.
+
+reserved the top two large subnets to be sub-subnetted for WAN links, we would have enough capacity for 256 point-to-point links.
 
 192.168.252.0 through 192.168.253.254: WAN subnets 0 through 127
 192.168.254.0 through 192.168.255.254: WAN subnets 128 through 255

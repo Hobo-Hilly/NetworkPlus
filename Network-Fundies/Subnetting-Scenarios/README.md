@@ -46,6 +46,12 @@ So to find a networkID we need to play with the network portion of the address w
 
 So we need to find out how many combinations of 2 we can make with 3 bits. Which is 2 to the power of 3. The number 2 comes from the fact that in binary we only use 1 or 0. So the combinations look like...
 
+NOTE: Subnet's formula == 2^s
+two to the power of s.
+s: the number of 1's added to the subnet mask, FROM what the submask was ORIGINALLY. 
+
+This gives us 2^3 == 8
+
 8 possibilities:
 A. 000 ==  .0
 B. 100 ==  .128 
@@ -63,10 +69,12 @@ So we see that the answer to the second question is 22.230.76.96/27.
 Scenario #3: You have 209.51.44.0/24, you need to subnet into 5 networks, what is your new subnet mask?
 A.255.255.255.252
 B.225.255.255.240
-C.255.255.255.224
+C.255.255.255.224  $
 D.255.255.255.192
 
-So based on what we learn if we increase the bits within the networks, the network portion, right. When we start to subnet, that means we get additional networks, right, if we increase the amount of bits that in the host portion we get more hosts, but we're looking at networks right now. So, I need to figure out how many bits does it take to get to 5 networks?
+So based on what we learn if we increase the bits within the network portion. When we start to subnet, that means we get additional networks, right, if we increase the amount of bits that in the host portion we get more hosts, but we're looking at networks right now. So, I need to figure out how many bits does it take to get to 5 networks?
+
+
 
 So I know that if we borrow one bit, that gives me two networks 0.0 and 0.128
 If we borrow two bits to the power of two is gonna give me four possibilities.
@@ -125,6 +133,8 @@ B.191.199.71.255    255.255.248.0   $
 C.191.199.97        255.255.248.0
 D.191.199.67.97     255.255.248.0
 
+AGAIN we will use binary ANDing. The IPaddress in question and AND that with the subnet mask and we get the networkID.
+
 191.199.67.97 == 10111111.11000111.01000011.01100001
 255.255.248.0 == 11111111.11111111.11111 {000.00000000
 
@@ -141,7 +151,7 @@ In order to get the BroadcastID we need to turn ALL of the host bits to 1.
 
 Scenario #7: how many hosts can 191.199.67.97/21 support?
 A.2047	
-B.2048
+B.2048  $  but its 2046 if you dont count the Broadcast ID or the Network ID
 C.2046
 D.2045
 
@@ -149,7 +159,12 @@ D.2045
 191.199.67.97 == 10111111.11000111.01000011.01100001
 Subnet Mask 255.255.11111{000.00000000 
 
-So we need to do 2 to the power of 11 which equals 2048
+NOTE: Host's Formula == 2^h - 2
+Two to the power of h minus 2. 
+h: represents the number of 0's in the subnet mask, if the subnet mask were converted to binary.
+-2: the minus 2 represents the first and last address. First Address is used to ID the network. Last Address is used as the broadcast address.
+
+So using the Host's formula we need to do 2 to the power of 11 because there are 11 ZEROS in the subnet mask. So 2^11 -2 = 2046. The answer here is 2048 but using the host's formula it subtracts 2 becuase the broadcast ID and Network ID cannot be used for a host ips. 
 
 
 
@@ -161,7 +176,7 @@ B.255.255.255.252 and /21
 C.255.255.255.254 and /31
 D.255.255.255.252 and /30  $
 
-Since the subnet mask MUST be all 1's with no 0's we can simple convert the last octet using the CIDR notation given.  We also know that one host/node bit gets you 2 networks because 1 value place has a possiblity of two outcomes. 0 and 128. So the answer is D!
+Since the subnet mask MUST be all 1's with no 0's we can simply convert the last octet using the CIDR notation given.  We also know that one host/node bit gets you 2 networks because 1 value place has a possiblity of two outcomes. 0 and 128. So the answer is D!
 
 11111111.11111111.11111111.111111 {0
 
@@ -180,7 +195,7 @@ Binary ANDing is the process of performing multiplication to two binary numbers.
           0 and 1 = 0
           1 and 1 = 1
 
-You use ANDing most often when comparing an IP address to its subnet mask. The end result of ANDing these two numbers together is to yield the network number of that address.
+You use ANDing most often when comparing an IP address to its subnet mask. The end result of ANDing these two numbers together is to yield the network number Network ID of that address.
 
 
 192.168.100.115 == 11000000.10101000.01100100.01110011
@@ -192,4 +207,4 @@ You use ANDing most often when comparing an IP address to its subnet mask. The e
 
 Convert back to dot decimal notation.
 
-192.168.100.64
+192.168.100.64 is the NetworkID

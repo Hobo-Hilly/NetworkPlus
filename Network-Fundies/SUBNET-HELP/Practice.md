@@ -95,7 +95,8 @@ Now lets calculate the Subnets. The original subnet mask was 255.0.0.0. We have 
 The new subnet mask uses/adds 14 subnet bits. So the subnets formula is 2^14 = 16,384 
 So this is more than enough to cover our 200 loactions. 
 
-
+10.0.0.1    == 00001010 00000000 00000000 00000001
+255.255.252 == 11111111 11111111 11111100 00000000
 
 
 
