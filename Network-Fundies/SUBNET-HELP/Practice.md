@@ -21,15 +21,15 @@ KEY: Just because you determine you have the right number of hosts for your LAN 
 The list of possible private ranges we will work with is as follows.
 
 Address ranges to be use by private networks are:
-Class A: 10.0. 0.0 to 10.255. 255.255.
-Class B: 172.16. 0.0 to 172.31. 255.255.
-Class C: 192.168. 0.0 to 192.168. 255.255.
+Class A: 10.0. 0.0    to    10.255. 255.255.
+Class B: 172.16. 0.0    to    172.31. 255.255.
+Class C: 192.168. 0.0    to    192.168. 255.255.
 
 ---------------------------------------------------------------------------------------------
 
 We are planning to use the ip block 192.168.0.0. Currently we have a small network of 40 hosts. But this will grow to 400 hosts within the next year. We also plan to have multiple locations of the same size in the future and need to enable them to communicate using this address space.
 
-What subnet mask so I need to make this happen?
+What subnet mask do I need to make this happen?
 
 1. Determing a subnet mask to try out.
 The simplest thing to do is to try out 255.255.255.0. This would give us 192.168.0.1 - 192.168.0.254 for hosts. Leaving 192.168.0.0 reserved for network ID and 192.168.0.255 reserved for the broadcast ID.
@@ -56,7 +56,7 @@ That is how you arrive at the total of 510 usable hosts.
 -------------------------------------------------------------------
 Second half of the problem.
 -------------------------------------------------------------------
-We are expecting to have 200 remote site with 400 pcs each. What subnet mask should we use? We know that the subnet mask 255.255.254.0 will cover our 400 pcs giving us 510 hosts. But does it support the 200 remote sites we will need in the future? Lets find out. 
+We are expecting to have 200 remote sites with 400 pcs each. What subnet mask should we use? We know that the subnet mask 255.255.254.0 will cover our 400 pcs giving us 510 hosts. But does it support the 200 remote sites we will need in the future? Lets find out. 
 
 4. To find the subnets we need to count the number of bits that were ADDED on to the ORIGINAL subnet mask. These are AKA subnet bits. So we started with ip block 192.168.0.0 and an ORIGINAL subnet mask of 255.255.0.0.
 We used the host's formula to figure out we needed a subnet mask of 255.255.254.0.
@@ -77,26 +77,7 @@ The hosts formula would be 2^8 - 2 = 254 Hosts Which we can see that this will N
 
 ==============================================================================
 
-Lets try 10.0.0.0 and a subnet mask of 255.255.0.0.
 
-Convert to Binary 00001010 00000000 00000000 00000000
-Subnets mask      11111111 11111111 11111100 00000000
-
-So applying the hosts formula we would get 2^10 - 2 = 1,022 usable hosts. 
-
-This is over kill but we are there on hosts. Lets convert our new subnet mask back to binary.
- 11111111 11111111 11111100 00000000 ==   255.255.252
-
-Now lets calculate the Subnets. The original subnet mask was 255.0.0.0. We have added 14 1's on to it. Looks like this.
-
-255.0.0.0   == 11111111 00000000 00000000 00000000  Original subnet
-255.255.252 == 11111111 11111111 11111100 00000000  New Subnet
-
-The new subnet mask uses/adds 14 subnet bits. So the subnets formula is 2^14 = 16,384 
-So this is more than enough to cover our 200 loactions. 
-
-10.0.0.1    == 00001010 00000000 00000000 00000001
-255.255.252 == 11111111 11111111 11111100 00000000
 
 
 
