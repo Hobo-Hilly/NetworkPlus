@@ -1,21 +1,21 @@
-Hello there! These are additional Notes through Professor Messor. I am hoping to make these all short and sweet. They will all also be tagged with there 
-corrisponding place on the Network+ N10-008 CompTIA Exam Objectives. Enjoy.
+Hello there! These are additional Notes from Professor Messer. I am hoping to make these all short and sweet. They will all also be tagged with a there 
+corresponding place on the Network+ N10-008 CompTIA Exam Objectives. Enjoy.
 
 PDU (Protocol Data Unit)
 
 Transmission units
     - A different group of data at different OSI layers.
 We are taking a little bit of data and transmitting it across the network as a SINGLE UNIT.
-EX: We know that layer 2 or the Data link layer is going to encapsulate the data to insure the data moves from One MAC address
+EX: We know that layer 2 or the Data link layer is going to encapsulate the data to ensure the data moves from One MAC address
 to the Next MAC address.
-DOESN'T care whats on the inside of the Frame.
+DOESN'T care what's on the inside of the Frame.
 
 The next layer IP operates on a Packet of Data
-- Inside is TCP or UDP or something else, but it doesn't really care. It's Job is to take the data from end point to end point.
+- Inside is TCP or UDP or something else, but it doesn't really care. Its Job is to take the data from end point to end point.
 Or said another way, from one IP address to another.
 
 The next layer is going to have one of two things. 
-A TCP SEGMENT || a UDP DATAGRAM  with in this part of the packet.
+A TCP SEGMENT || a UDP DATAGRAM  within this part of the packet.
 
 Step through:
  Pretend we open a browser and we want to send data from the Web Server to the Web Client
