@@ -40,16 +40,16 @@ Layer
 
 
 
-Layer 2 :  |Frame|     | IP  |     | Application  | | Frame  |   Over Ethernet we need to have a DLC or Data Link Control layer 2 fram header and  
+Layer 2 :  |Frame|     | IP  |     | Application  | | Frame  |   Over Ethernet, we need to have a DLC or Data Link Control layer 2 frame header and  
 Data Link      |Header|   | Header|  |Data   |  | Trailer|  frame trailer to indicate the start and where the end of this frame might be.
 Layer            
 
 
 
 
-Order of opperations:
+Order of operations:
 Sending...
-Data Starts at Layer 7 and goes down to 1            Data appears at layer 7 in human readable format. (Applications: HTTPS, IMAP, SSH, etc)
+Data Starts at Layer 7 and goes down to 1            Data appears at Layer 7 in human-readable format. (Applications: HTTPS, IMAP, SSH, etc)
 Layer 6                                              Layer 6
 Layer 5                                              Layer 5        
 Layer 4   TCP/UDP                                    Layer 4  TCP/UDP
@@ -66,7 +66,7 @@ The control information is setting bits in the header of each packet
 Each bit has a particular definition
 
 
-This means that the device receiving this dat can interpret those bits and inderstand how to process the data properly. 
+This means that the device receiving this data can interpret those bits and understand how to process the data properly. 
 These bits are called "Control Flags" 
 
 The TCP header contains important control information
