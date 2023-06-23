@@ -89,18 +89,18 @@ being sent using the tcp header.
 
 There are also FLAGS w/in IP headers. Most of the FLAGS w/in the IP header deal 
 with the fragmentation of data.
-EX: there may be a times where you want to send traffic across the network but because of the 
-architecture or design of the network your not able to send packets that are very large.
+EX: there may be times where you want to send traffic across the network but because of the 
+architecture or design of the network you're not able to send packets that are very large.
 
-In those cases you will need to fragment the data in order to get through the smaller size networks.
--   The maximum size of a packet we are able to send is decieded by the MTU or Maximum Transmission Unit.
+In those cases, you will need to fragment the data in order to get through the smaller size networks.
+-   The maximum size of a packet we are able to send is decided by the MTU or Maximum Transmission Unit.
 -   This designates the size of the data that we are able to send through the network without having to fragment any data
 -   Fragmenting data slows down the flow of traffic in a network
 -   losing a fragment loses an entire packet.
--   Requires overhead to chop up a packet and send it in pieces for it to be reassembled at the other side.
+-   Requires overhead to chop up a packet and send it in pieces for it to be reassembled on the other side.
 
-Its important to know the MTU all the way through the network from start to finish.
-It's hard to know what the MTU is through each hop from point A to point B because each hop to each router is a different network with potentially different MTU's
+It's important to know the MTU all the way through the network from start to finish.
+It's hard to know what the MTU is through each hop from point A to point B because each hop to each router is a different network with potentially different MTUs
 
 -   Automated methods are often inaccurate
 -   Especially when ICMP is filtered 
@@ -111,7 +111,7 @@ DLC Header|IP Header | TCP Header | TCP Data      | FCS     |
 14 bytes  | 20 bytes | 20 bytes   | 1460 bytes    | 4 bytes |
           |---------------------------------------| 
               *IP Packet Size: 1500 bytes*
-The max size of a frame on an ethernet network is 1500 bytes
+The max size of a frame on an Ethernet network is 1500 bytes
 
 
 What is fragmentation?
@@ -122,21 +122,21 @@ Fragments are always in multiples of 8 because of the number of fragmentation of
 
 
 MTU sizes are usually configured once
-- Based on the network infrastructure and don't change often.
+- Based on the network infrastructure and doesn't change often.
 
 A significant concern for tunneled traffic
 -  The tunnel may be smaller than your local Ethernet segment
 
-What if you send packets with don't fragment (DF) set?
+What if you send packets with a don't fragment (DF) set?
 - Routers will respond back and tell you to fragment
 - Hope you get the ICMP message.
 
-Trouble shooting using ping.
+Troubleshooting using ping.
 to test the mtu of a network
 - Ping with DF and force a maximum size of 1472 bytes
 1500 bytes-8 byte ICMP header -20 bytes IP address = 1472 bytes
 * Windows: ping -f -l 1472 8.8.8.8
-* linux and macOS: ping -D -s 1472 8.8.8.8
+* Linux and macOS: ping -D -s 1472 8.8.8.8
 -f : don't fragment
 -l : length of data in bytes
 8.8.8.8 : googles DNS server
