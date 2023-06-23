@@ -20,13 +20,11 @@ A TCP SEGMENT || a UDP DATAGRAM  with in this part of the packet.
 Step through:
  Pretend we open a browser and we want to send data from the Web Server to the Web Client
 
-Layers 5,6,7 :  Application Data
+Layers 5,6,7:  Application Data
 
-Layer 4      : | TCP   | Application|       So we put a TCP Header in front of the Application Data
+Layer 4: | TCP |  | Application|       So we put a TCP Header in front of the Application Data
 
-
-Transport      | Header| Data       |
-
+Transport      | Header| | Data  |
 
 
 
@@ -34,10 +32,10 @@ Transport      | Header| Data       |
 
 
 
-Layer 3     :  | IP    | TCP   | Application |  We need IP address to send the TCP data so we must add an IP Header to move
 
+Layer 3:  | IP  |  | TCP  | | Application |  We need IP address to send the TCP data so we must add an IP Header to move
 
-Network        | Header| Header| Data        |  data from one IP address to Another IP address
+Network   | Header| | Header|  | Data     |  data from one IP address to Another IP address
 
 
 
