@@ -41,8 +41,8 @@ Network   | Header| | Header|  | Data     |  data from one IP address to Another
 
 
 
-Layer 2     :  |Frame | IP    | Application  | Frame  |   Over Ethernet we need to have a DLC or Data Link Control layer 2 fram header and  
-Data Link      |Header| Header| Data         | Trailer|  frame trailer to indicate the start and where the end of this frame might be.
+Layer 2 :  |Frame|  | IP  |  | Application  | | Frame  |   Over Ethernet we need to have a DLC or Data Link Control layer 2 fram header and  
+Data Link      |Header|   | Header|  |Data   |  | Trailer|  frame trailer to indicate the start and where the end of this frame might be.
                
 
 
