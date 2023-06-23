@@ -22,8 +22,8 @@ Step through:
 
 Layers 5,6,7:  Application Data
 
-Layer 4: | TCP |  | Application|       So we put a TCP Header in front of the Application Data
-Transport  | Header| | Data  |
+Layer 4: | TCP |    | Application|       So we put a TCP Header in front of the Application Data
+Transport  | Header|    | Data  |
 Layer
 
 
@@ -32,15 +32,15 @@ Layer
 
 
 
-Layer 3:  | IP  |  | TCP  | | Application |  We need IP address to send the TCP data so we must add an IP Header to move
+Layer 3:  | IP |   | TCP  |   | Application |  We need IP address to send the TCP data so we must add an IP Header to move
 
-Network   | Header| | Header|  | Data     |  data from one IP address to Another IP address
+Network   | Header|   | Header|  | Data     |  data from one IP address to Another IP address
 Layer
 
 
 
 
-Layer 2 :  |Frame|  | IP  |  | Application  | | Frame  |   Over Ethernet we need to have a DLC or Data Link Control layer 2 fram header and  
+Layer 2 :  |Frame|     | IP  |     | Application  | | Frame  |   Over Ethernet we need to have a DLC or Data Link Control layer 2 fram header and  
 Data Link      |Header|   | Header|  |Data   |  | Trailer|  frame trailer to indicate the start and where the end of this frame might be.
 Layer            
 
